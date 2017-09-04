@@ -15,7 +15,7 @@ More details [here](http://www.statmt.org/wmt17/pdf/WMT05.pdf).
 
 * Python 3
 * Download the [test suite](https://ocsync.limsi.fr/index.php/s/br2eCuzvIzkFrPW) and put it in the main directory.
-* [Morphodita](https://github.com/ufal/morphodita/releases/tag/v1.3.0) version 1.3 for Czech, as well as the [tagging model and dictionaries](https://lindat.mff.cuni.cz/repository/xmlui/handle/11858/00-097C-0000-0023-68D8-1)
+* [Morphodita](https://github.com/ufal/morphodita/releases/tag/v1.3.0) version 1.3 for Czech, as well as the [tagging model and dictionary](https://lindat.mff.cuni.cz/repository/xmlui/handle/11858/00-097C-0000-0023-68D8-1)
 * [LU MII Tagger](https://peteris.rocks/blog/latvian-part-of-speech-tagging/#lu-mii-tagger) for Latvian
 * [Moses tokenizer]( https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer)
 * Download our [Latvian dictionary](https://ocsync.limsi.fr/index.php/s/LsfjCDpmSFSKp71) and put it in utils/
@@ -23,7 +23,7 @@ More details [here](http://www.statmt.org/wmt17/pdf/WMT05.pdf).
 ## How To
 
 Use your MT system to translate the source file `morph_test_suite_limsi.en` (untokenized).
-The next steps assume that the outputs are tokenized with [Moses tokenizer]( https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer).
+The next steps assume that the outputs are tokenized with [Moses tokenizer]( https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer) (use English tokenization for Latvian).
 
 ### Czech
 
@@ -36,7 +36,7 @@ The next steps assume that the outputs are tokenized with [Moses tokenizer]( htt
 * Consistency:
 	* Run tagging:<br>
 `cat morph_test_suite_limsi.translated.cs | sed  's/$/\n/' | tr ' ' '\n' | morphodita/src/run_tagger czech-morfflex-pdt-131112-raw_lemmas.tagger-best_accuracy --input=vertical --output=vertical > morph_test_suite_limsi.translated.cs.disambig`
-* Run evaluation:<br>
+	* Run evaluation:<br>
 `python3 evaluate_consistency_cs.py -i morph_test_suite_limsi.translated.cs.disambig -n morph_test_suite_limsi.en.info`
 
 ### Latvian
