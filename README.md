@@ -9,6 +9,8 @@ types of information:
 * Fluency: do we have local agreement?
 * Consistency: how well is the system confident in its prediction?
 
+More details [here](http://www.statmt.org/wmt17/pdf/WMT05.pdf).
+
 ## Requirements
 
 * Python 3
