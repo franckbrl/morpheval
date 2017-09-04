@@ -26,15 +26,15 @@ The next steps assume that the outputs are tokenized with [Moses tokenizer]( htt
 ### Czech
 
 * Adequacy and fluency:
-** Run analysis:
+	* Run analysis:<br>
 `cat morph_test_suite_limsi.translated.cs | sed  's/$/\n/' | tr ' ' '\n' | morphodita/src/run_morpho_analyze czech-morfflex-131112-raw_lemmas.dict 1 --input=vertical --output=vertical > morph_test_suite_limsi.translated.cs.ambig`
-** Run evaluation:
+	* Run evaluation:<br>
 `python3 evaluate_morph_pairs_cs.py -i morph_test_suite_limsi.translated.cs.ambig -n morph_test_suite_limsi.en.info`
 
 * Consistency:
-** Run tagging:
+	* Run tagging:<br>
 `cat morph_test_suite_limsi.translated.cs | sed  's/$/\n/' | tr ' ' '\n' | morphodita/src/run_tagger czech-morfflex-pdt-131112-raw_lemmas.tagger-best_accuracy --input=vertical --output=vertical > morph_test_suite_limsi.translated.cs.disambig`
-* Run evaluation:
+* Run evaluation:<br>
 `python3 evaluate_consistency_cs.py -i morph_test_suite_limsi.translated.cs.disambig -n morph_test_suite_limsi.en.info`
 
 ### Latvian
@@ -43,13 +43,17 @@ The next steps assume that the outputs are tokenized with [Moses tokenizer]( htt
 `./tags_lv.sh morph_test_suite_limsi.translated.lv`
 
 * Adequacy and fluency:
-** Generate ambiguities (analysis) with the dictionary:
+	* Generate ambiguities (analysis) with the dictionary:<br>
 ` python3 make_ambig_lv.py -w morph_test_suite_limsi.translated.lv -t morph_test_suite_limsi.translated.lv.tag > morph_test_suite_limsi.translated.lv.tag.ambig`
-** Run evaluation:
+	* Run evaluation:<br>
 `python3 evaluate_morph_pairs_lv.py -i morph_test_suite_limsi.translated.lv.tag.ambig -n morph_test_suite_limsi.en.info`
 
 * Consistency:
-** Format output:
+	* Format output:<br>
 `python3 make_disambig_vert.py -w  morph_test_suite_limsi.translated.lv -t morph_test_suite_limsi.translated.lv.tag > morph_test_suite_limsi.translated.lv.tag.disambig`
-** Run evaluation:
+	* Run evaluation:<br>
 `python3 evaluate_consistency_lv.py -i morph_test_suite_limsi.translated.lv.tag.disambig -n morph_test_suite_limsi.en.info`
+
+## Publication
+
+Franck Burlot and François Yvon, [Evaluating the morphological competence of machine translation systems](http://www.statmt.org/wmt17/pdf/WMT05.pdf). In Proceedings of the Second Conference on Machine Translation (WMT’17). Association for Computational Linguistics, Copenhagen, Denmark, 2017.
