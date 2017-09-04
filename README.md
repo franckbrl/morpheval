@@ -18,9 +18,9 @@ types of information:
 * [Moses tokenizer]( https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer)
 * Download our [Latvian dictionary](https://ocsync.limsi.fr/index.php/s/LsfjCDpmSFSKp71) and put it in utils/
 
-## Usage
+## How To
 
-Use your MT system to translate the source file `test_suite/morph_test_suite_limsi.en` (untokenized).
+Use your MT system to translate the source file `morph_test_suite_limsi.en` (untokenized).
 The next steps assume that the outputs are tokenized with [Moses tokenizer]( https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer).
 
 ### Czech
@@ -39,7 +39,7 @@ The next steps assume that the outputs are tokenized with [Moses tokenizer]( htt
 
 ### Latvian
 
-* Run tagging (outputs `morph_test_suite_limsi.translated.lv.tag`):
+* Set the path to LU MII Tagger in `tags_lv.sh` and run tagging (outputs `morph_test_suite_limsi.translated.lv.tag`):<br>
 `./tags_lv.sh morph_test_suite_limsi.translated.lv`
 
 * Adequacy and fluency:
