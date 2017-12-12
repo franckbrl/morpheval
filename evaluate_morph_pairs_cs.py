@@ -113,9 +113,13 @@ def evaluate(sents, tags, morph, subcat=None):
                             if subcat == 'tense' and tag_r == 'P' and (tag_r_full[-1] == 'B' or analysis[1][-1] == 'B'):
                                 if tag_r_full[-1] == analysis[1][-1] == 'B':
                                     return 1
+                                else:
+                                    continue
                             if subcat == 'tense' and (tag_r_full[-1] == 'f' or analysis[1][-1] == 'f'):
                                 if tag_r_full[-1] == analysis[1][-1]:
                                     return 1
+                                else:
+                                    continue
                             return 1
         return 0
 
