@@ -94,7 +94,7 @@ def evaluate(sents, tags, morph, subcat=None):
         new_verb = [n for n in new_verb if n != []]
         if new_verb == []:
             return 0
-        n = ['person', 'number', 'time'].index(subcat)
+        n = ['person', 'number', 'tense'].index(subcat)
         for word in new_verb:
             for analysis in word:
                 i = analysis[0]
@@ -110,16 +110,12 @@ def evaluate(sents, tags, morph, subcat=None):
                         tag_r = tag_r_full[n]
                         # Present perfective forms
                         if tag_r == tag or tag_r == 'X' or tag == 'X':
-                            if subcat == 'time' and tag_r == 'P' and (tag_r_full[-1] == 'B' or analysis[1][-1] == 'B'):
+                            if subcat == 'tense' and tag_r == 'P' and (tag_r_full[-1] == 'B' or analysis[1][-1] == 'B'):
                                 if tag_r_full[-1] == analysis[1][-1] == 'B':
                                     return 1
-                                else:
-                                    return 0
-                            if subcat == 'time' and (tag_r_full[-1] == 'f' or analysis[1][-1] == 'f'):
+                            if subcat == 'tense' and (tag_r_full[-1] == 'f' or analysis[1][-1] == 'f'):
                                 if tag_r_full[-1] == analysis[1][-1]:
                                     return 1
-                                else:
-                                    return 0
                             return 1
         return 0
 
@@ -231,6 +227,8 @@ for sents, tags, morph in get_pairs(args.i, args.n):
         subcat = None
         if ':' in morph:
             morph, subcat = morph.split(':')
+            if subcat == 'time':
+                subcat = 'tense'
 
         if morph in ['pron2nouns']:
             for subcat in ['gender', 'number', 'case']:
@@ -239,7 +237,7 @@ for sents, tags, morph in get_pairs(args.i, args.n):
                 total[inf] += 1
 
         elif morph in ['coordverb']:
-            for subcat in ['person', 'number', 'time']:
+            for subcat in ['person', 'number', 'tense']:
                 inf = morph+':'+subcat
                 results[inf] += evaluate(sents, tags, morph, subcat)
                 total[inf] += 1
@@ -271,7 +269,7 @@ else:
 
     b_feat = ['coordverb:number',
     'coordverb:person',
-    'coordverb:time',
+    'coordverb:tense',
     'pron2coord',
     'pron2nouns:gender',
     'pron2nouns:number',
