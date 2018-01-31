@@ -18,7 +18,7 @@ More details [here](http://www.statmt.org/wmt17/pdf/WMT05.pdf).
 * [Morphodita](https://github.com/ufal/morphodita/releases/tag/v1.3.0) version 1.3 for Czech, as well as the [tagging model and dictionary](https://lindat.mff.cuni.cz/repository/xmlui/handle/11858/00-097C-0000-0023-68D8-1)
 * [LU MII Tagger](https://peteris.rocks/blog/latvian-part-of-speech-tagging/#lu-mii-tagger) for Latvian
 * [Moses tokenizer]( https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer)
-* Download our [Latvian dictionary](https://morpheval.limsi.fr/latvian_dict.pkl) and put it in utils/
+* Download our [Latvian dictionary](https://morpheval.limsi.fr/) and put it in utils/
 
 ## How To
 
