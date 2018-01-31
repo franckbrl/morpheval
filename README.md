@@ -2,7 +2,7 @@
 
 Evaluation of the morphological quality of machine translation outputs.
 The automatically generated test suite in English should be translated
-into Czech or Latvian. The output is then analyzed and provide three
+into Czech or Latvian. The output is then analyzed and provides three
 types of information:
 
 * Adequacy: has the morphological information been well conveyed from the source?
